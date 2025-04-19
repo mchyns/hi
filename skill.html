@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill & Pengalaman</title>
+    <meta name="description" content="Portfolio interaktif dengan tampilan futuristik dan responsif">
+    <meta name="keywords" content="portfolio, web developer, skill, pengalaman">
+    <meta name="author" content="Nama Anda">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0B0E11;
+            position: relative;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 15% 15%, rgba(246, 65, 108, 0.2) 0%, transparent 30%),
+                radial-gradient(circle at 85% 25%, rgba(26, 214, 255, 0.25) 0%, transparent 40%),
+                radial-gradient(circle at 50% 60%, rgba(88, 22, 195, 0.3) 0%, transparent 50%),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(17, 23, 36, 0.8) 70%);
+            z-index: -2;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: 
+                linear-gradient(90deg, transparent 20%, rgba(17, 132, 255, 0.03) 40%, transparent 60%),
+                linear-gradient(0deg, transparent 40%, rgba(17, 132, 255, 0.03) 50%, transparent 60%);
+            background-size: 300% 300%, 300% 300%;
+            animation: cyberpulse 15s linear infinite;
+            z-index: -1;
+            opacity: 1;
+        }
+        
+        @keyframes cyberpulse {
+            0% {
+                background-position: 0% 0%, 0% 0%;
+                box-shadow: 0 0 50px rgba(17, 132, 255, 0);
+            }
+            
+            25% {
+                background-position: 100% 0%, 50% 0%;
+                box-shadow: 0 0 50px rgba(17, 132, 255, 0.1);
+            }
+            
+            50% {
+                background-position: 200% 100%, 100% 50%;
+                box-shadow: 0 0 50px rgba(17, 132, 255, 0.3);
+            }
+            
+            75% {
+                background-position: 300% 200%, 150% 100%;
+                box-shadow: 0 0 50px rgba(17, 132, 255, 0.1);
+            }
+            
+            100% {
+                background-position: 0% 0%, 0% 0%;
+                box-shadow: 0 0 50px rgba(17, 132, 255, 0);
+            }
+        }
+        
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(13, 99, 200, 0.15) 1px, transparent 1px),
+                               linear-gradient(90deg, rgba(13, 99, 200, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            transform: rotateX(60deg) scale(2);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        
+        .cyber-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .cyber-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(29, 128, 255, 0.8), transparent);
+            animation: cyber-line-anim 6s linear infinite;
+            box-shadow: 0 0 10px rgba(29, 128, 255, 0.5);
+        }
+        
+        .cyber-line:nth-child(1) {
+            top: 20%;
+            animation-delay: 0s;
+            opacity: 0.7;
+        }
+        
+        .cyber-line:nth-child(2) {
+            top: 40%;
+            animation-delay: 1.5s;
+            opacity: 0.5;
+        }
+        
+        .cyber-line:nth-child(3) {
+            top: 65%;
+            animation-delay: 3s;
+            opacity: 0.8;
+        }
+        
+        .cyber-line:nth-child(4) {
+            top: 85%;
+            animation-delay: 4.5s;
+            opacity: 0.6;
+        }
+        
+        @keyframes cyber-line-anim {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(10, 15, 25, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            z-index: 1;
+            position: relative;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #64ffda;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(100, 255, 218, 0.4);
+        }
+        
+        .skill-section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #1de9b6;
+            border-bottom: 1px solid rgba(29, 233, 182, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-card {
+            background: rgba(17, 25, 40, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #64ffda, #26a0da, #7b5aff, #64ffda);
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: gradientBorder 6s linear infinite;
+            opacity: 0.3;
+            border-radius: 8px;
+        }
+        
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .skill-card h3 {
+            color: #1de9b6;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .skill-level {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #64ffda, #26a0da);
+            border-radius: 3px;
+            width: 0;
+            transition: width 1s ease-out;
+        }
+        
+        .experience {
+            margin-top: 40px;
+        }
+        
+        .timeline {
+            position: relative;
+            margin-top: 30px;
+            padding-left: 50px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 15px;
+            width: 2px;
+            background: linear-gradient(to bottom, #64ffda, #26a0da);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(17, 25, 40, 0.8);
+            border-radius: 8px;
+            animation: slideRight 0.5s ease-out both;
+            animation-play-state: paused;
+        }
+        
+        .timeline-item.visible {
+            animation-play-state: running;
+        }
+        
+        @keyframes slideRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -43px;
+            top: 20px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #64ffda;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.8);
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(29, 233, 182, 0.2);
+            border-radius: 20px;
+            color: #64ffda;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-title {
+            margin: 0 0 10px;
+            color: #fff;
+            font-size: 1.2em;
+        }
+        
+        .timeline-subtitle {
+            margin: 0 0 15px;
+            color: #1de9b6;
+            font-size: 1em;
+            font-style: italic;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background: linear-gradient(90deg, #64ffda, #1de9b6);
+            color: #0a192f;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 4px 15px rgba(100, 255, 218, 0.4);
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(100, 255, 218, 0.6);
+        }
+        
+        .btn-back::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-back:hover::before {
+            left: 100%;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 20px auto;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .timeline {
+                padding-left: 30px;
+            }
+            
+            .timeline-item::before {
+                left: -23px;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .skills {
+                grid-template-columns: 1fr;
+            }
+            
+            .skill-card {
+                padding: 15px;
+            }
+            
+            .timeline-item {
+                padding: 15px;
+            }
+            
+            .timeline-date {
+                font-size: 0.8em;
+                padding: 4px 10px;
+            }
+            
+            .btn-back {
+                padding: 10px 20px;
+            }
+        }
+        
+        @media screen and (max-width: 400px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+            
+            h1 {
+                margin-bottom: 20px;
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <div class="cyber-lines">
+        <div class="cyber-line"></div>
+        <div class="cyber-line"></div>
+        <div class="cyber-line"></div>
+        <div class="cyber-line"></div>
+    </div>
+    
+    <div class="container">
+        <h1>Skill & Pengalaman</h1>
+        
+        <div class="skill-section">
+            <h2>Technical Skills</h2>
+            <div class="skills">
+                <div class="skill-card">
+                    <h3>HTML & CSS</h3>
+                    <p>Pengembangan web front-end dengan fokus pada desain responsif dan modern</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>JavaScript</h3>
+                    <p>Pengembangan interaktif dan dinamis dengan JavaScript dan framework modern</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>Python</h3>
+                    <p>Pemrograman dengan Python untuk pengembangan aplikasi dan analisis data</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>PHP</h3>
+                    <p>Pengembangan aplikasi web berbasis server dengan PHP</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>Laravel</h3>
+                    <p>Framework PHP untuk pengembangan aplikasi web dengan cepat dan terstruktur</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>Node.js</h3>
+                    <p>Pengembangan aplikasi server dengan JavaScript menggunakan Node.js</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>Responsive Design</h3>
+                    <p>Pembuatan website yang responsif untuk semua ukuran perangkat</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+            </div>
+                </div>
+                
+        <div class="skill-section">
+            <h2>Soft Skills</h2>
+            <div class="skills">
+                <div class="skill-card">
+                    <h3>Komunikasi</h3>
+                    <p>Kemampuan komunikasi yang efektif baik tertulis maupun lisan</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>Manajemen Waktu</h3>
+                    <p>Pengorganisasian tugas dan efisiensi penggunaan waktu yang baik</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>Problem Solving</h3>
+                    <p>Analisis permasalahan dan pengembangan solusi kreatif</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        
+        <div class="experience">
+            <h2>Proyek & Tugas Kuliah</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Semester 5</div>
+                    <h3 class="timeline-title">Aplikasi Web Ojek Online</h3>
+                    <h4 class="timeline-subtitle">Mata Kuliah: Pemrograman Web Lanjut</h4>
+                    <p>Mengembangkan aplikasi layanan ojek online dengan fitur pemesanan, tracking lokasi driver, dan sistem pembayaran. Dibangun menggunakan Laravel, JavaScript, dan integrasi dengan API Maps.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Semester 4</div>
+                    <h3 class="timeline-title">Sistem Pemesanan Tiket Online</h3>
+                    <h4 class="timeline-subtitle">Mata Kuliah: Basis Data Lanjut</h4>
+                    <p>Membangun platform pemesanan tiket online dengan fitur pencarian, pemilihan tempat duduk, dan konfirmasi pembayaran. Menggunakan PHP, MySQL, dan JavaScript untuk antarmuka yang interaktif.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Semester 3</div>
+                    <h3 class="timeline-title">Aplikasi Manajemen Inventaris</h3>
+                    <h4 class="timeline-subtitle">Mata Kuliah: Pemrograman Berorientasi Objek</h4>
+                    <p>Mengembangkan sistem manajemen inventaris dengan fungsionalitas pencatatan barang masuk/keluar, laporan stok, dan analisis penjualan. Dibuat dengan Python dan framework Django.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="index.html" class="btn-back">Kembali ke Halaman Utama</a>
+        </div>
+    </div>
+    
+    <script>
+        // Animasi progres bar skill
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBars = document.querySelectorAll('.skill-progress');
+            setTimeout(() => {
+                progressBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+            }, 300);
+            
+            // Animasi timeline items
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
